@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic-Tac-Toe</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
     <header>
-        <h1>Play Tic, Tac, Toe</h1>
-        <p>Built with HTML, CSS, JavaScript and-if course-lots of love!</p>
+      <h1>Play Tic, Tac, Toe</h1>
+      <p>Built with HTML, CSS, JavaScript and-if course-lots of love!</p>
     </header>
+
+    <aside id="side-form">
+        <div>
+        <form action="/" method="get">
+            <h3>Choose your name</h3>
+            <label for="user-name">Player name</label>
+            <input type="text" id="user-name" required>
+            <p id="warning"></p>
+            <a href="#">Cancel</a>
+            <a href="#">Confirm</a>
+        </div>
+        </form>
+    </aside>
+
     <main>
-        <section >
-            <div class="Players">
-                <p>Player 1</p>
-                <h2 id="Player-name"></h2>
-                <span>X</span>
-                <a href="">Edit</a>
-            </div>
-            <div class="Players">
-                <p>Player 2</p>
-                <h2 id="Player-name"></h2>
-                <span>O</span> 
-                <a href="">Edit</a>
-            </div>
-            <div id="Play">Start New Game</div>
-</section>
-    
+      <section>
+        <div class="Players">
+          <p>Player 1</p>
+          <h2 id="Player-name"></h2>
+          <span>X</span>
+          <a href="#side-form">Edit</a>
+        </div>
+        <div class="Players">
+          <p>Player 2</p>
+          <h2 id="Player-name"></h2>
+          <span>O</span>
+          <a href="#side-form">Edit</a>
+        </div>
+        <div id="Play">Start New Game</div>
+      </section>
     </main>
-</body>
+
+  </body>
+
 </html>
