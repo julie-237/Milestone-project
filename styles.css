@@ -1,0 +1,56 @@
+body {
+    text-align: center;
+    width: 100%;
+    
+}
+
+header {
+color: white;
+background-color: rgba(62, 5, 176, 0.863);
+padding: 15px 0 15px 0;
+margin-bottom: 2rem;
+}
+
+.Players {
+display: inline-block;
+margin: 0 0.5rem;
+background-color: rgba(192, 165, 249, 0.586);
+width: 12%;
+border-radius: 5px;
+padding-bottom: 1rem;
+}
+
+.Players span {
+display: block;
+}
+
+.Players a {
+display: block;
+text-decoration: none;
+}
+
+#Play {
+width: 10%;
+padding: 6px;
+border-radius: 3px;
+background-color: rgba(62, 5, 176, 0.863);
+margin: 0.5rem auto;
+color: white;
+}
+
+.Players h2 {
+color: rgba(62, 5, 176, 0.863);
+font-weight: bold;
+text-transform: uppercase;
+}
+
+.Players span {
+color: rgba(23, 5, 59, 0.863);
+font-weight: bolder;
+text-transform: uppercase;
+}
+
+.Players p {
+    color: rgba(0, 0, 0);
+    font-weight: bold;
+    }
