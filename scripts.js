@@ -13,19 +13,25 @@ const cancelButtonElement = document.getElementById("Cancel");
 
 function closeConfigurationPanel() {
   configurationPanelElement.style.display = "none";
+  formElement.children[1].classList.remove("error")
+  errorOutputElement.textContent = "";
+
 }
 
 cancelButtonElement.addEventListener("click", closeConfigurationPanel);
 
 const formElement = document.querySelector("form");
+const errorOutputElement = document.getElementById("warning");
+
 function getPlayerName(event) {
   event.preventDefault();
   const formdata = new FormData(event.target);
-  const enteredPlayerName = formdata.get("user-name");
-  console.log(enteredPlayerName)
-  // const inputElement = document.querySelector("input")
-  //const playerNameElement = document.getElementById("edit-player1")
-  // playerNameElement.textContent = inputElement.textContent
+  const enteredPlayerName = formdata.get("user-name").trim();
+  if (!enteredPlayerName) {
+    errorOutputElement.textContent = "Please enter a valid name!";
+    event.target.children[1].classList.add("error")
+    return;
+  }
 }
 
 formElement.addEventListener("submit", getPlayerName);

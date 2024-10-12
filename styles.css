@@ -49,10 +49,23 @@ header {
   font-weight: bolder;
 }
 
+.error input {
+    border-color: rgb(253, 5, 5);
+    color: rgb(252, 6, 6);
+    background-color: rgb(253, 219, 219);
+
+
+}
+
 #side-form input {
   display: block;
   width: 45%;
   margin: auto;
+}
+
+.error label {
+    color: rgb(136, 2, 2);
+
 }
 
 #Cancel {
