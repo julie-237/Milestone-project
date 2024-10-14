@@ -17,6 +17,7 @@ function closeConfigurationPanel() {
   configurationPanelElement.style.display = "none";
   formElement.children[1].classList.remove("error");
   errorOutputElement.textContent = "";
+  formElement.children[1].children[1].value = ""
 }
 
 cancelButtonElement.addEventListener("click", closeConfigurationPanel);
@@ -49,6 +50,15 @@ function getPlayerName(event) {
   );
   updatedPlayerDataElement.textContent = enteredPlayerName;
   closeConfigurationPanel();
+
+  if (editedplayer === 1) {
+    players[0].name = enteredPlayerName
+  }
+  else {
+    players[1].name = enteredPlayerName
+  }
+
+  // shorter way could be players[editedplayer -1].name = enteredPlayername
 }
 
 formElement.addEventListener("submit", getPlayerName);
