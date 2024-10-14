@@ -74,3 +74,25 @@ function showgameboard() {
 }
 
 startNewGameBtn.addEventListener("click", showgameboard);
+
+const gameFieldElements = document.querySelectorAll("#Game-board li");
+let activePlayer = 0;
+
+
+function switchPlayer() {
+    if (activePlayer === 0) {
+      activePlayer = 1;
+    } else {
+      activePlayer = 0;
+    }
+  }
+
+function selectgamefield(event) {
+  event.target.textContent = players[activePlayer].symbol;
+  event.target.classList.add("disabled");
+  switchPlayer()
+}
+
+for (const gameFieldElement of gameFieldElements) {
+  gameFieldElement.addEventListener("click", selectgamefield);
+}
