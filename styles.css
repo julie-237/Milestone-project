@@ -120,7 +120,7 @@ header {
 
 }
 
-#Play {
+#play {
   width: 10%;
   padding: 6px;
   border-radius: 3px;
@@ -145,6 +145,10 @@ header {
 .Players p {
   color: rgba(0, 0, 0);
   font-weight: bold;
+}
+
+#Game {
+    display: none; 
 }
 
 #Game div {

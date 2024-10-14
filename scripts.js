@@ -17,7 +17,7 @@ function closeConfigurationPanel() {
   configurationPanelElement.style.display = "none";
   formElement.children[1].classList.remove("error");
   errorOutputElement.textContent = "";
-  formElement.children[1].children[1].value = ""
+  formElement.children[1].children[1].value = "";
 }
 
 cancelButtonElement.addEventListener("click", closeConfigurationPanel);
@@ -52,13 +52,25 @@ function getPlayerName(event) {
   closeConfigurationPanel();
 
   if (editedplayer === 1) {
-    players[0].name = enteredPlayerName
-  }
-  else {
-    players[1].name = enteredPlayerName
+    players[0].name = enteredPlayerName;
+  } else {
+    players[1].name = enteredPlayerName;
   }
 
   // shorter way could be players[editedplayer -1].name = enteredPlayername
 }
 
 formElement.addEventListener("submit", getPlayerName);
+
+const gameBoardElement = document.getElementById("Game");
+const startNewGameBtn = document.getElementById("play");
+
+function showgameboard() {
+  if (players[0].name === "" || players[1].name === "") {
+    alert("Please set custom player names for both players!");
+    return;
+  }
+  gameBoardElement.style.display = "block";
+}
+
+startNewGameBtn.addEventListener("click", showgameboard);
