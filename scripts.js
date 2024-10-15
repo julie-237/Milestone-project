@@ -70,29 +70,54 @@ function showgameboard() {
     alert("Please set custom player names for both players!");
     return;
   }
+  activePlayerNameElement.textContent = players[activePlayer].name;
   gameBoardElement.style.display = "block";
 }
 
 startNewGameBtn.addEventListener("click", showgameboard);
 
-const gameFieldElements = document.querySelectorAll("#Game-board li");
-let activePlayer = 0;
+//const gameFieldElements = document.querySelectorAll("#Game-board li");
+const gameFieldElement = document.getElementById("Game-Board");
 
+const gameData = [
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+];
+
+let activePlayer = 0;
+const activePlayerNameElement = document.getElementById("active-player-name");
 
 function switchPlayer() {
-    if (activePlayer === 0) {
-      activePlayer = 1;
-    } else {
-      activePlayer = 0;
-    }
+  if (activePlayer === 0) {
+    activePlayer = 1;
+  } else {
+    activePlayer = 0;
   }
+  activePlayerNameElement.textContent = players[activePlayer].name;
+}
 
 function selectgamefield(event) {
-  event.target.textContent = players[activePlayer].symbol;
-  event.target.classList.add("disabled");
-  switchPlayer()
+  if (event.target.tagName !== "LI") {
+    return;
+  }
+  const selectfield = event.target;
+  selectfield.textContent = players[activePlayer].symbol;
+  selectfield.classList.add("disabled");
+
+  const selectedColumn = selectfield.dataset.col - 1;
+  const selectedrow = selectfield.dataset.row - 1;
+
+  if (gameData[selectedColumn][selectedrow] > 0) {
+    alert("Please select an empty field");
+    return;
+  }
+  gameData[selectedColumn][selectedrow] = activePlayer + 1;
+  console.log(gameData);
+  switchPlayer();
 }
 
-for (const gameFieldElement of gameFieldElements) {
-  gameFieldElement.addEventListener("click", selectgamefield);
-}
+//for (const gameFieldElement of gameFieldElements) {
+// gameFieldElement.addEventListener("click", selectgamefield);
+//}
+gameBoardElement.addEventListener("click", selectgamefield);
