@@ -1,17 +1,38 @@
+let gameIsOver = false;
+function resetGameStatus() {
+  activePlayer = 0;
+  currentRound = 1;
+  gameIsOver = false;
+  //gameOverElement.firstElementChild.innerHTML ='You won, <span id="winner-name">PLAYER NAME</span>!';
+  gameOverElement.style.display = "none";
+  let gameFieldIndex = 0;
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      gameData[i][j] = 0;
+      const gameFieldElements = document.querySelectorAll("#Game-board li");
+      const gameFieldItemElement = gameFieldElements[gameFieldIndex];
+      gameFieldItemElement.textContent = "";
+      gameFieldItemElement.classList.remove("disabled");
+      gameFieldIndex++;
+    }
+  }
+}
+
 const editPlayer1ButtonElement = document.getElementById("edit-player1");
 const editPlayer2ButtonElement = document.getElementById("edit-player2");
 const configurationPanelElement = document.getElementById("side-form");
-
+const editorMsgElement = document.querySelector("form h3")
 let editedplayer = 0;
 function OpenConfigurationPanel(event) {
   editedplayer = +event.target.dataset["playerId"]; // + to change value type from string to interger
   configurationPanelElement.style.display = "block";
+  editorMsgElement.textContent = "Enter player" + editedplayer + " name"
 }
 
 editPlayer1ButtonElement.addEventListener("click", OpenConfigurationPanel);
 editPlayer2ButtonElement.addEventListener("click", OpenConfigurationPanel);
 
-const cancelButtonElement = document.getElementById("Cancel");
+const cancelButtonElement = document.getElementById("cancel");
 
 function closeConfigurationPanel() {
   configurationPanelElement.style.display = "none";
@@ -65,17 +86,32 @@ formElement.addEventListener("submit", getPlayerName);
 const gameBoardElement = document.getElementById("Game");
 const startNewGameBtn = document.getElementById("play");
 
+const closeBtnElement = document.getElementById("close");
+const closeBtncontainer = document.getElementById("close-Box");
+const EditMsgElement = document.getElementById("verification")
 function showgameboard() {
   if (players[0].name === "" || players[1].name === "") {
-    alert("Please set custom player names for both players!");
+    closeBtnElement.style.display = "block"
+    closeBtncontainer.style.display = "block"
+    EditMsgElement.style.display = "block"
     return;
   }
+  resetGameStatus();
   activePlayerNameElement.textContent = players[activePlayer].name;
   gameBoardElement.style.display = "block";
+  shadowElement.style.display = "none";
+  editPlayer1ButtonElement.style.display = "none";
+  editPlayer2ButtonElement.style.display = "none";
 }
 
 startNewGameBtn.addEventListener("click", showgameboard);
 
+function closeVerificationBox() {
+  //closeBtnElement.style.display = "none"
+  closeBtncontainer.style.display = "none"
+    //EditMsgElement.style.display = "none"
+}
+closeBtnElement.addEventListener("click", closeVerificationBox)
 //const gameFieldElements = document.querySelectorAll("#Game-board li");
 const gameFieldElement = document.getElementById("Game-Board");
 
@@ -98,7 +134,7 @@ function switchPlayer() {
 }
 
 function selectgamefield(event) {
-  if (event.target.tagName !== "LI") {
+  if (event.target.tagName !== "LI" || gameIsOver === true) {
     return;
   }
   const selectfield = event.target;
@@ -116,8 +152,10 @@ function selectgamefield(event) {
   console.log(gameData);
 
   const winnerId = checkForGameOver();
-  console.log(winnerId);
-  
+  if (winnerId !== 0) {
+    endGame(winnerId);
+  }
+
   currentRound++;
   switchPlayer();
 }
@@ -171,4 +209,22 @@ function checkForGameOver() {
     return -1;
   }
   return 0;
+}
+
+const gameOverElement = document.getElementById("game-over");
+const winnerNameElement = document.getElementById("winner-name");
+const shadowElement = document.getElementById("cover");
+
+function endGame(winnerId) {
+  editPlayer1ButtonElement.style.display = "flex";
+  editPlayer2ButtonElement.style.display = "flex";
+  gameIsOver = true;
+  gameOverElement.style.display = "block";
+  shadowElement.style.display = "block";
+  if (winnerId > 0) {
+    const winnerName = players[winnerId - 1].name;
+    winnerNameElement.textContent = winnerName;
+  } else {
+    gameOverElement.firstElementChild.textContent = "It's a draw!";
+  }
 }

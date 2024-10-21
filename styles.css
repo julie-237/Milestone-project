@@ -32,65 +32,87 @@ header {
   right: 35%;
 }
 
-#side-form:target {
-  display: block;
-}
-
 #side-form form {
-  padding: 2px 8px;
+  padding: 40px 30px;
 }
 
 #side-form h3 {
-  margin: 3px auto;
+  margin-top: 3rem;
 }
 
 #side-form label {
   display: block;
   font-weight: bolder;
+  margin-top: 20px ;
 }
 
 .error input {
-    border-color: rgb(253, 5, 5);
-    color: rgb(252, 6, 6);
-    background-color: rgb(253, 219, 219);
-
-
+  border-color: rgba(252, 3, 3, 0.3);
+  color: rgb(252, 6, 6);
+  background-color: rgb(253, 219, 219);
 }
 
 #side-form input {
   display: block;
   width: 45%;
-  margin: auto;
+  border: 1px solid rgb(221, 209, 250);
+  border-radius: 5px;
+  margin: 10px auto 0 auto;
+  padding: 10px
 }
 
 .error label {
-    color: rgb(136, 2, 2);
-
+  color: rgb(238, 8, 8);
 }
 
-#Cancel {
+#cancel {
   font: inherit;
   color: rgba(62, 5, 176, 0.863);
-  padding: 7px;
+  padding: 3px 10px;
   border-radius: 4px;
-  border: 1px solid transparent;
-  background-color: transparent;
+  border: 1px solid rgb(220, 206, 251);
+  background-color: rgba(234, 226, 253);
   cursor: pointer;
 }
 
 #Cancel:hover {
-    background-color: rgb(234, 210, 250);
+  background-color: rgba(216, 168, 244, 0.91);
 }
 
 #btn {
   font: inherit;
-  padding: 3px;
+  padding: 3px 10px;
+  margin-top: 10px;
   border-radius: 4px;
   border: 1px solid transparent;
   background-color: rgba(62, 5, 176, 0.863);
   border: 1px solid rgba(62, 5, 176, 0.863);
   color: white;
   cursor: pointer;
+}
+
+#close-Box {
+  display: flex;
+  flex-direction: column-reverse;
+  color: rgb(197, 16, 16);
+  background-color: rgba(254, 73, 73, 0.266);
+  width: 22%;
+  border: 1px solid rgba(252, 65, 65, 0.266);
+  border-radius: 5px;
+  margin: 10px auto;
+  display: none;
+}
+
+#close {
+  border: 1px solid transparent;
+  background-color: transparent;
+  display: none;
+}
+
+#verification {
+  display: none;
+  margin: 0px auto 10px auto;
+  padding-bottom: 10px;
 }
 
 .Players {
@@ -102,12 +124,17 @@ header {
   padding-bottom: 1rem;
 }
 
-.Players span {
-  display: block;
+
+.icon {
+  width: 0.8rem;
+  margin: 0 5px 0 5px;
 }
 
 .Players button {
   font: inherit;
+  display: flex;
+  flex-direction: row;
+  text-align: start;
   margin: auto;
   background-color: rgb(234, 210, 250);
   border: 1px solid rgb(234, 210, 250);
@@ -116,8 +143,7 @@ header {
 }
 
 .Players button:hover {
-    background-color: rgb(224, 189, 248);
-
+  background-color: rgb(224, 189, 248);
 }
 
 #play {
@@ -125,7 +151,7 @@ header {
   padding: 6px;
   border-radius: 3px;
   background-color: rgba(62, 5, 176, 0.863);
-  margin: 0.5rem auto;
+  margin: 1rem auto;
   color: white;
 }
 
@@ -135,7 +161,7 @@ header {
   text-transform: uppercase;
 }
 
-.Players span {
+.Players article {
   color: rgba(23, 5, 59);
   font-weight: bolder;
   font-size: 1.5rem;
@@ -147,14 +173,24 @@ header {
   font-weight: bold;
 }
 
-#Game {
-    display: none; 
+#cover {
+  display: none;
+  position: absolute;
+  width: 18.1%;
+  height: 36.6%;
+  background-color: rgba(118, 116, 120, 0.459);
+  top: 36.2rem;
+  left: 41%;
 }
 
-#Game div {
+#Game {
+  display: none;
+}
+
+#game-over {
   padding: 1rem 2rem;
   color: white;
-  background-color: rgba(23, 5, 59);
+  background-color: rgb(56, 31, 103);
   margin: auto;
   border-radius: 5px;
   width: 30%;
